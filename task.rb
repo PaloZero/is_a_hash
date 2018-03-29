@@ -1,5 +1,6 @@
 require 'date'
 
+# this does not need description ma' friend ;)
 class Task
 	attr_reader :id, :date, :completed
 	@task
@@ -8,6 +9,7 @@ class Task
 	@group
 	@date
 	
+	# task constructor
 	def initialize(id, task, group, date)
 		@id = id
 		@task = task
@@ -16,48 +18,65 @@ class Task
 		@completed = false
 	end
 
+	# two tasks are the same if they have the same id
 	def ==(other)
 		false unless @id == other.id
 	end
 
+	# a task is greater than other if it is completed. If both are completed or incompleted, it is decided by their date.
 	def <=>(other)
-		self > other if @completed == false && other.completed == true
-		self < other if @completed == true && other.completed == false
-		date_order(self, other) if @completed == false && other.completed == false || @completed == true && other.completed == true
+		return -1 if self.completed? == false && other.completed? == true
+		return 1 if self.completed? == true && other.completed? == false
+		date_order(self, other) if self.completed? == false && other.completed? == false || self.completed? == true && other.completed? == true
 	end
 
+	# a date 'spaceship' for tasks
 	def date_order(task1, task2)
-		task1 > task2 if task1.date == '' && task2.date.is_a?(Date) 
-		task2 > task1 if task1.date.is_a?(Date) && task2.date == ''
-		else task1.date <=> task2.date
+		return -1 if task1.has_date? == false && task2.has_date? == true 
+		return 1 if task1.has_date? == true && task2.has_date? == false
+		task1.date <=> task2.date if task1.has_date? == true && task2.has_date? == true
+		id_order(task1, task2) if task1.date == task2.date
 	end
 
+	# an id 'spaceship' for tasks
+	def id_order(task1, task2)
+		return -1 if task1.id > task2.id
+		return 1
+	end
+
+	# completes a task
 	def complete
 		@completed = true
 	end
 
+	# ask if a task is completed
 	def completed?
 		@completed == true
 	end
 
-	def has_data?
-		@task == ''
+	# ask if task have date
+	def has_date?
+		@date == ''
 	end
 
+	# ask if task have group
 	def has_group?
 		@group == ''
 	end
 end
 
+####TESTING####
 date1 = Date.new(2015,03,20)
-date2 = Date.new(2015,03,19)
-task1 = Task.new(1,'Task1', "poo", date1)
-task2 = Task.new(2,'Task2', "poo", date2)
-
-puts task1 <=> task2   #1
+date2 = Date.new(2015,03,20)
+task1 = Task.new(1,'Task', "poo", date1)
+task2 = Task.new(2,'Task', "poo", date1)
 
 task1.complete
-puts task1.completed?
+puts task1.completed? #true
 
-puts task1 <=> task2 #-1
+puts task1 <=> task2 #1
 
+task2.complete
+puts task2.completed? #true
+
+puts task1 <=> task2 #1 because task2 is the last task
