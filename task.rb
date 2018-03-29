@@ -44,6 +44,16 @@ class Task
 		return 1
 	end
 
+	# (eql? == '==') => true
+	def eql?(other)
+		self == other
+	end
+
+	# it hashes the id as an array because every task has a different id and hash method for arrays is really good !
+	def hash
+		[@id].hash
+	end
+
 	# completes a task
 	def complete
 		@completed = true
@@ -63,10 +73,6 @@ class Task
 	def has_group?
 		@group == ''
 	end
-
-	def to_s
-		"#{@id}\t[#{ if @completed then "x" else " " end }]\t#{ if @date.nil? then "\t" else @date.to_s end} #{yield; @task}"
-	end
 end
 
 ####TESTING####
@@ -74,7 +80,6 @@ date1 = Date.new(2015,03,20)
 date2 = Date.new(2015,03,20)
 task1 = Task.new(1,'Task', "poo", date1)
 task2 = Task.new(2,'Task', "poo", date1)
-
 task1.complete
 puts task1.completed? #true
 
@@ -84,3 +89,4 @@ task2.complete
 puts task2.completed? #true
 
 puts task1 <=> task2 #1 because task2 is the last task
+
