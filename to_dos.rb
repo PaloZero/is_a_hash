@@ -29,7 +29,7 @@ class ToDos
 
   # Searches the To Do List for an Item's Task Data that matches 'query'
   def find(query)
-    @to_dos.each { |item| puts item if item.data.include?(query) }
+    @to_dos.each { |item| puts item if item.data.downcase.include?(query.downcase) }
   end
 
   # Seatches the ToDo List for an Item's ID that matches 'id'
