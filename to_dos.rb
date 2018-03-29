@@ -1,19 +1,15 @@
 class ToDos
-
-  # Called when creating new instance of class ToDos.
-  # Creates @to_dos as SortedSet.
-  # Sets @current_id to 0.
-  # Sets @current_group and @current date to nil in order not to be confused with other values.
+  @to_dos
+  @current_id
+  @default_date
+  @default_group
 
   def initialize
-    @to_dos = SortedSet.new
-    @current_id = 0
-    @current_date = nil
-    @current_group = nil
+
   end
 
   def list
-    ifjaiofjaofjaiso
+
   end
   
   def add(id, task_name, group, date)
@@ -35,8 +31,6 @@ class ToDos
   def archive
 
   end
-
-  #
 
   def next_id
 
