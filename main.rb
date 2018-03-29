@@ -1,13 +1,19 @@
 
 input = gets
-data_array = input.parse
+data_array = input.chomps.parse
 to_do_list = ToDos.new
 
 case data_array[0]
 	when 'add'
 		to_do_list.add(data_array[1], data_array[2], data_array[3])
 	when 'list'
-		
+		if data_array.last != ''
+			to_do_list.list_by_date(data_array.last.transform_to_date)
+		elsif data_array[1] != ''
+			to_do_list.list_by_group(data_array[1])
+		else
+			to_do_list.list
+		end
 	when 'complete'
 		to_do_list.complete(data_array[1])
 	when 'ac'
