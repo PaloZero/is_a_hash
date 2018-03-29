@@ -9,8 +9,8 @@ class ToDos
     @to_dos = SortedSet.new
     @groups = []
     @current_id = 0
-    @current_date = nil
-    @current_group = nil
+    @default_date = nil
+    @default_group = nil
   end
 
   def list
