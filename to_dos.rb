@@ -59,7 +59,7 @@ class ToDos
 
   # Adds 'group' to the Groups Array if it is not already in it
   def add_group_array(group)
-    @groups.append(group) unless @groups.include(group)
+    @groups.append(group) unless @groups.include?(group)
   end
 
 end
