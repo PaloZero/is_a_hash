@@ -18,7 +18,8 @@ while (input = gets.chomp) != 'exit'
       elsif data_array[1] != ''
         puts "fuego"
         puts data_array[1]
-        to_do_list.list_by_group()
+
+        to_do_list.list_by_group(data_array[1].sub(/\+/, ''))
       else
         puts "j"
         to_do_list.list

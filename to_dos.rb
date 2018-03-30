@@ -35,8 +35,8 @@ class ToDos
     group = @default_group unless @default_group.nil? || group != ''
     date = @default_date unless @default_date.nil? || date != ''
     add_group_array(group)
-    item = Task.new(next_id, task_name, group, date)
-    @to_dos << item
+    task = Task.new(next_id, task_name, group, date)
+    @to_dos.add(task)
   end
 
   # Searches the To Do List for an Item's Task Data that matches 'query'
@@ -79,6 +79,16 @@ class ToDos
     @current_id += 1
   end
 
+  def set(input)
+    case input.split[0]
+      when 'date_task'
+        set_date(input.split.last)
+      when 'group'
+        set_group(input.split.last)
+    end
+  end
+
+
   # Sets the Item's default Due Date to 'default_date'
   def set_date(default_date)
     @default_date = default_date
@@ -91,6 +101,6 @@ class ToDos
 
   # Adds 'group' to the Groups Array if it is not already in it
   def add_group_array(group)
-    @groups.append(group) unless @groups.include?(group)
+    @groups.push(group) unless @groups.include?(group)
   end
 end
