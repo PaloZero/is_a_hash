@@ -78,6 +78,3 @@ class ToDos
     @default_group = default_group
   end
 end
-
-todos = ToDos.new
-todos
