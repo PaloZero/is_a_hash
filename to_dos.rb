@@ -1,3 +1,4 @@
+require_relative 'task'
 class ToDos
 
   # Called when creating new instance of class ToDos.
@@ -36,7 +37,7 @@ class ToDos
   end
 
   def archive
-
+    @to_dos.each { |e| @to_dos.delete(e) if e.complete?}
   end
   
   def next_id
