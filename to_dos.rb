@@ -29,7 +29,7 @@ class ToDos
   end
 
   # Adds a new Item to the To Do List
-  def add(id, task_name, group, date)
+  def add(task_name, group, date)
     group = @default_group unless @default_group.nil? || group != ''
     date = @default_date unless @default_date.nil? || date != ''
     @groups.add_group_array(group)
