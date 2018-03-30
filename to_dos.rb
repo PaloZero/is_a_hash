@@ -1,4 +1,6 @@
 require_relative 'task'
+require 'yaml'
+
 class ToDos
 
   # Called when creating new instance of class ToDos.
@@ -39,8 +41,30 @@ class ToDos
   def archive
     @to_dos.each { |e| @to_dos.delete(e) if e.complete? }
   end
+
+  def save(filename)
+    serialized_self = YAML.dump(self)
+    File.open(filename, "w") do |savefile|
+      savefile.syswrite(serialized_self.to_s)
+    end
+    self
+  end
+
+  def open(filename)
+    serialized_self = nil
+    File.open(filename, "r") do |savefile|
+      serialized_self = savefile.gets
+    end
+    my_load = YAML.load(serialized_self)
+    @to_dos.clear
+    @to_dos = my_load.to_dos
+    @current_id = my_load.current_id
+    @default_date = my_load.default_date
+    @default_group = my_load.default_group
+    self
+  end
   
-  def next_id
+  private def next_id
     @current_id += 1
   end
 
