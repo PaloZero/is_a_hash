@@ -3,11 +3,6 @@ require 'date'
 # this does not need description ma' friend ;)
 class Task
 	attr_reader :id, :date, :completed
-	@task
-	@id
-	@completed
-	@group
-	@date
 	
 	# task constructor
 	def initialize(id, task, group, date)
@@ -41,7 +36,7 @@ class Task
 	# an id 'spaceship' for tasks
 	def id_order(task1, task2)
 		return -1 if task1.id > task2.id
-		return 1
+		1
 	end
 
 	# (eql? == '==') => true
