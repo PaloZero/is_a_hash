@@ -10,6 +10,7 @@ class ToDos
 
   def initialize
     @to_dos = SortedSet.new
+    @groups = []
     @current_id = 0
     @default_date = nil
     @default_group = nil
@@ -29,20 +30,21 @@ class ToDos
 
   # Adds a new Item to the To Do List
   def add(id, task_name, group, date)
-    add_group = @default_group unless @default_group.nil?
-    add_date = @default_date unless @default_date.nil?
-    item = Item.new(id, task_name, add_group, add_date)
+    group = @default_group unless @default_group.nil? || group != ''
+    date = @default_date unless @default_date.nil? || date != ''
+    @groups.add_group_array(group)
+    item = Item.new(next_id, task_name, add_group, add_date)
     self << item
   end
 
   # Searches the To Do List for an Item's Task Data that matches 'query'
   def find(query)
-    each { |item| puts item if item.data.include?(query) }
+    @to_dos.each { |item| puts item if item.data.downcase.include?(query.downcase) }
   end
 
   # Seatches the ToDo List for an Item's ID that matches 'id'
   def find_by_id(id)
-    each { |item| return item if item.id == id}
+    @to_dos.each { |item| return item if item.id == id}
   end
 
   def archive
@@ -83,5 +85,10 @@ class ToDos
   # Sets the Item's default Group to 'default_group'
   def set_group(default_group)
     @default_group = default_group
+  end
+
+  # Adds 'group' to the Groups Array if it is not already in it
+  def add_group_array(group)
+    @groups.append(group) unless @groups.include?(group)
   end
 end
