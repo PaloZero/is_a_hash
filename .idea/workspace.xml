@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/to_dos.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -27,8 +27,8 @@
       <file leaf-file-name="task.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="67" column="119" lean-forward="false" selection-start-line="67" selection-start-column="119" selection-end-line="67" selection-end-column="119" />
+            <state relative-caret-position="586">
+              <caret line="75" column="2" lean-forward="false" selection-start-line="75" selection-start-column="2" selection-end-line="75" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -141,12 +141,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522365806168</updated>
-      <workItem from="1522365807720" duration="9636000" />
+      <workItem from="1522365807720" duration="10256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9636000" />
+    <option name="totallyTimeSpent" value="10256000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1402" extended-state="6" />
@@ -186,15 +186,15 @@
     <entry file="file://$PROJECT_DIR$/to_dos.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="67" column="119" lean-forward="false" selection-start-line="67" selection-start-column="119" selection-end-line="67" selection-end-column="119" />
+        <state relative-caret-position="586">
+          <caret line="75" column="2" lean-forward="false" selection-start-line="75" selection-start-column="2" selection-end-line="75" selection-end-column="2" />
           <folding />
         </state>
       </provider>
