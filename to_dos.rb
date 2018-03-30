@@ -3,6 +3,7 @@ require 'yaml'
 require 'set'
 
 class ToDos
+  attr_reader :groups
 
   # Called when creating new instance of class ToDos.
   # Creates @to_dos as SortedSet.
@@ -18,11 +19,11 @@ class ToDos
   end
 
   def list
-    @to_dos.each { |task| task.to_s { yield } }
+    @to_dos.each { |task| puts(task.to_s { yield if block_given? }) }
   end
 
-  def list_by_group(group_name)
-    @to_dos.each { |task| task.to_s { "+" + task.group.to_s } if task.group == group_name }
+  def list_by_group(*group_name)
+    group_name.each{ @to_dos.each { |task| task.to_s { "+" + task.group.to_s } if task.group == group_name } }
   end
 
   def list_by_date(date)

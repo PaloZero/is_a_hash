@@ -2,7 +2,7 @@ require 'date'
 
 # this does not need description ma' friend ;)
 class Task
-	attr_reader :id, :date, :completed
+	attr_reader :id, :date, :completed, :group
 	
 	# task constructor
 	def initialize(id, task, group, date)
@@ -70,7 +70,7 @@ class Task
 	end
 
 	def to_s
-		"#{@id}\t[#{ if @completed then "x" else " " end }]\t#{ if @date.nil? then "\t" else @date.to_s end} #{yield; @task}"
+		"#{@id}\t[#{ if @completed then "x" else " " end }]\t#{ if @date.nil? then "\t" else @date.to_s end} #{yield if block_given?; @task}"
 	end
 end
 
