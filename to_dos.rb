@@ -16,9 +16,12 @@ class ToDos
   end
 
   def list
-    
+
   end
-  
+
+  def list_by_group(group_name)
+    @to_dos.each { |task| task.to_s {task.group} }
+  end
 
   # Adds a new Item to the To Do List
   def add(id, task_name, group, date)
