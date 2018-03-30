@@ -1,5 +1,6 @@
 require_relative 'task'
 require 'yaml'
+require 'set'
 
 class ToDos
 
@@ -32,9 +33,9 @@ class ToDos
   def add(task_name, group, date)
     group = @default_group unless @default_group.nil? || group != ''
     date = @default_date unless @default_date.nil? || date != ''
-    @groups.add_group_array(group)
-    item = Item.new(next_id, task_name, add_group, add_date)
-    self << item
+    add_group_array(group)
+    item = Task.new(next_id, task_name, group, date)
+    @to_dos << item
   end
 
   # Searches the To Do List for an Item's Task Data that matches 'query'
