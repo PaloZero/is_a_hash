@@ -61,7 +61,7 @@ class Task
 
 	# ask if a task is completed
 	def completed?
-		@completed == true
+		@completed
 	end
 
 	# ask if task have date
@@ -73,7 +73,7 @@ class Task
 	def has_group?
 		@group == ''
 	end
-	
+
 	def to_s
 		"#{@id}\t[#{ if @completed then "x" else " " end }]\t#{ if @date.nil? then "\t" else @date.to_s end} #{yield; @task}"
 	end
