@@ -1,5 +1,6 @@
 class ToDos
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   # Called when creating new instance of class ToDos.
   # Creates @to_dos as SortedSet.
@@ -11,6 +12,15 @@ class ToDos
     @current_id = 0
     @default_date = nil
     @default_group = nil
+=======
+  @to_dos
+  @current_id
+  @default_date
+  @default_group
+
+  def initialize
+
+>>>>>>> b6503eeddd3e46cf29dc888ff386fe46ec924c71
 =======
   @to_dos
   @current_id
