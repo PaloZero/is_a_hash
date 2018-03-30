@@ -37,11 +37,11 @@ class ToDos
   end
 
   def archive
-    @to_dos.each { |e| @to_dos.delete(e) if e.complete?}
+    @to_dos.each { |e| @to_dos.delete(e) if e.complete? }
   end
   
   def next_id
-
+    @current_id += 1
   end
 
   # Sets the Item's default Due Date to 'default_date'
@@ -53,5 +53,7 @@ class ToDos
   def set_group(default_group)
     @default_group = default_group
   end
-
 end
+
+todos = ToDos.new
+todos
