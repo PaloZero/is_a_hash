@@ -16,11 +16,15 @@ class ToDos
   end
 
   def list
-
+    @to_dos.each { |task| task.to_s { yield } }
   end
 
   def list_by_group(group_name)
-    @to_dos.each { |task| task.to_s {task.group} }
+    @to_dos.each { |task| task.to_s { "+" + task.group.to_s } if task.group == group_name }
+  end
+
+  def list_by_date(date)
+    @to_dos.each { |task| task.to_s if task.date == date }
   end
 
   # Adds a new Item to the To Do List

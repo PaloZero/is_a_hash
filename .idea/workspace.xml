@@ -17,8 +17,8 @@
       <file leaf-file-name="to_dos.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/to_dos.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+            <state relative-caret-position="425">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -27,8 +27,8 @@
       <file leaf-file-name="task.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="386">
+              <caret line="67" column="119" lean-forward="false" selection-start-line="67" selection-start-column="119" selection-end-line="67" selection-end-column="119" />
               <folding />
             </state>
           </provider>
@@ -141,12 +141,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522365806168</updated>
-      <workItem from="1522365807720" duration="8490000" />
+      <workItem from="1522365807720" duration="9636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8490000" />
+    <option name="totallyTimeSpent" value="9636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1402" extended-state="6" />
@@ -185,16 +185,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/to_dos.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        <state relative-caret-position="425">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="386">
+          <caret line="67" column="119" lean-forward="false" selection-start-line="67" selection-start-column="119" selection-end-line="67" selection-end-column="119" />
           <folding />
         </state>
       </provider>
