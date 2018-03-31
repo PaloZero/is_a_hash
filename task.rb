@@ -2,15 +2,20 @@ require 'date'
 
 # this does not need description ma' friend ;)
 class Task
-	attr_reader :id, :date, :completed, :group
-	
+	attr_reader :id, :date, :completed, :group, :task
+
 	# task constructor
-	def initialize(id, task, group, date)
+	def initialize(id, task, group, date, completed = false)
 		@id = id
 		@task = task
 		@group = group
 		@date = date
-		@completed = false
+		@completed = completed
+		self
+	end
+
+	def completed= (value)
+		@completed = value if value.is_a?(TrueClass) || value.is_a?(FalseClass)
 	end
 
 	# two tasks are the same if they have the same id
@@ -20,23 +25,23 @@ class Task
 
 	# a task is greater than other if it is completed. If both are completed or incompleted, it is decided by their date.
 	def <=>(other)
-		return -1 if self.completed? == false && other.completed? == true
-		return 1 if self.completed? == true && other.completed? == false
-		date_order(self, other) if self.completed? == false && other.completed? == false || self.completed? == true && other.completed? == true
+		return -1 if (self.completed? == false && other.completed? == true)
+		return 1 if (self.completed? == true && other.completed? == false)
+		return date_order(self, other) if ((self.completed? == false && other.completed? == false) || (self.completed? == true && other.completed? == true))
 	end
 
 	# a date 'spaceship' for tasks
 	def date_order(task1, task2)
-		return -1 if task1.has_date? == false && task2.has_date? == true 
-		return 1 if task1.has_date? == true && task2.has_date? == false
-		task1.date <=> task2.date if task1.has_date? == true && task2.has_date? == true
-		id_order(task1, task2) if task1.date == task2.date
+		return -1 if (task1.has_date? == false && task2.has_date? == true) 
+		return 1 if (task1.has_date? == true && task2.has_date? == false)
+		return (task1.date <=> task2.date) if (task1.has_date? == true && task2.has_date? == true)
+		return id_order(task1, task2) if ((task1.date == task2.date) || (task1.has_date? == false && task1.has_date? == false))
 	end
 
 	# an id 'spaceship' for tasks
 	def id_order(task1, task2)
-		return -1 if task1.id > task2.id
-		1
+		return 1 if task1.id > task2.id
+		-1
 	end
 
 	# (eql? == '==') => true
@@ -61,31 +66,31 @@ class Task
 
 	# ask if task have date
 	def has_date?
-		@date == ''
+		!(@date == '')
 	end
 
 	# ask if task have group
 	def has_group?
-		@group == ''
+		false if @group == ''
 	end
 
 	def to_s
-		"#{@id}\t[#{ if @completed then "x" else " " end }]\t#{ if @date.nil? then "\t" else @date.to_s end} #{yield if block_given?; @task}"
+		"#{@id}\t[#{ if @completed then "x" else " " end }]\t" + "#{ if @date.nil? then '         ' else @date.to_s end} #{ if block_given? then yield end} #{@task}"
 	end
 end
 
 ####TESTING####
-date1 = Date.new(2015,03,20)
-date2 = Date.new(2015,03,20)
-task1 = Task.new(1,'Task', "poo", date1)
-task2 = Task.new(2,'Task', "poo", date1)
-task1.complete
-puts task1.completed? #true
+#date1 = Date.new(2015,03,20)
+#date2 = Date.new(2015,03,20)
+#task1 = Task.new(1,'Task', "poo", date1)
+#task2 = Task.new(2,'Task', "poo", date1)
+#task1.complete
+#puts task1.completed? #true
 
-puts task1 <=> task2 #1
+#puts task1 <=> task2 #1
 
-task2.complete
-puts task2.completed? #true
+#task2.complete
+#puts task2.completed? #true
 
-puts task1 <=> task2 #1 because task2 is the last task
+#puts task1 <=> task2 #1 because task2 is the last task
 

@@ -2,6 +2,7 @@ require_relative 'to_dos'
 require_relative 'string'
 require_relative 'date'
 require_relative 'task'
+require_relative 'kernel'
 
 to_do_list = ToDos.new
 
@@ -12,20 +13,20 @@ while (input = gets.chomp) != 'exit'
     when 'add'
       to_do_list.add(data_array[1], data_array[2], data_array[3])
     when 'list'
-      puts "agua"
+      #puts "agua"
       if data_array.last != ''
-        to_do_list.list_by_date(data_array.last.transform_to_date)
+        puts data_array.last
+        to_do_list.list_by_date(data_array.last==''?nil : data_array.last)
       elsif data_array[1] != ''
-        puts "fuego"
-        puts data_array[1]
-
-        to_do_list.list_by_group(data_array[1].sub(/\+/, ''))
+        #puts "fuego"
+        to_do_list.list_by_group(data_array[2] ==''? nil : data_array[2])
       else
-        puts "j"
+        #puts "j"
         to_do_list.list
       end
     when 'complete'
-      to_do_list.complete(data_array[1])
+      to_do_list.complete(data_array[1].to_i)
+
     when 'ac'
       to_do_list.archive
     when 'save'

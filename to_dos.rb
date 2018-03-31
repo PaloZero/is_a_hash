@@ -19,21 +19,32 @@ class ToDos
   end
 
   def list
-    @to_dos.each { |task| puts(task.to_s { yield if block_given? }) }
+    puts 'all'
+    @to_dos.each do |task|
+      puts(task.to_s { "+" + task.group.to_s })
+    end
   end
 
-  def list_by_group(*group_name)
-    group_name.each{ @to_dos.each { |task| task.to_s { "+" + task.group.to_s } if task.group == group_name } }
-  end
+  def list_by_group(group_name)
+    if group_name.nil?
+      @groups.each do |group|
+        puts group.to_s
+        @to_dos.each { |task| puts task.to_s if task.group == group }
+      end
+    else
+      puts group_name
+      @to_dos.each { |task| puts task.to_s if task.group == group_name }
+    end
 
+  end
   def list_by_date(date)
-    @to_dos.each { |task| task.to_s if task.date == date }
+    @to_dos.each { |task| puts (task.to_s{"+" + task.group if task.date == date })}
   end
 
   # Adds a new Item to the To Do List
   def add(task_name, group, date)
-    group = @default_group unless @default_group.nil? || group != ''
-    date = @default_date unless @default_date.nil? || date != ''
+    group = @default_group  unless group != '' # || @default_group.nil?
+    date = @default_date  unless date != '' # || @default_date.nil?
     add_group_array(group)
     task = Task.new(next_id, task_name, group, date)
     @to_dos.add(task)
@@ -41,12 +52,15 @@ class ToDos
 
   # Searches the To Do List for an Item's Task Data that matches 'query'
   def find(query)
-    @to_dos.each { |item| puts item if item.data.downcase.include?(query.downcase) }
+    @to_dos.each { |task| puts task if task.task.downcase.include?(query.downcase) }
   end
 
   # Seatches the ToDo List for an Item's ID that matches 'id'
-  def find_by_id(id)
-    @to_dos.each { |item| return item if item.id == id}
+  def complete(id)
+    task = @to_dos.find{ |task| task.id == id }
+    @to_dos.delete(task)
+    task.complete
+    @to_dos << task
   end
 
   def archive
@@ -91,7 +105,7 @@ class ToDos
 
   # Sets the Item's default Due Date to 'default_date'
   def set_date(default_date)
-    @default_date = default_date
+    @default_date = default_date.transform_to_date
   end
 
   # Sets the Item's default Group to 'default_group'

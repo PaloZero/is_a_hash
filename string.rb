@@ -21,7 +21,7 @@ class String
     data.sub!(/due[\s]?/, '')
     data.sub!(date, '')
 
-    [command, data, group, date]
+    [command, data, group, date.transform_to_date]
 
   end
 
@@ -33,6 +33,8 @@ class String
       Date.today + 1
     elsif self == 'yesterday'
       Date.today - 1
+    elsif self == ''
+      self
     else
       Date.strptime(self, '%d/%m/%Y')
     end
